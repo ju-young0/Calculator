@@ -6,15 +6,29 @@ public class Calculator {
 
     private AbstractOperation operation;
 
-//    private List<Double> numbers;   //  입력된 숫자를 저장하는 컬렉션
-//    private List<Double> results;   //  연산 결과를 저장하는 컬렉션
+    public Calculator(char operation) {
+        this.operation = setOperation(operation);
+    }
 
-    public Calculator(AbstractOperation operation) {
-        this.operation = operation;
+    AbstractOperation setOperation(char operator) {
+        switch (operator){
+            case '+':
+                return new AddOperation();
+            case '-':
+                return new SubstractOperation();
+            case '*':
+                return new MultiplyOperation();
+            case '/':
+                return new DivideOperation();
+            default:
+                throw new RuntimeException();   // exception으로 빠져나가기
+        }
     }
-    public void setOperation(AbstractOperation operation) {
-        this.operation = operation;
+
+    public AbstractOperation getOperation() {
+        return operation;
     }
+
 
     public double calculate (int firstNumber, int secondNumber) {
         double results = 0;
