@@ -1,7 +1,5 @@
 package com.example.calculator.lv2;
 
-import java.util.List;
-
 public class Calculator {
 
     private AbstractOperation operation;
